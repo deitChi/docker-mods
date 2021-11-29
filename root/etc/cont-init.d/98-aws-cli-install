@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+echo "*** AWS-ADFS Installer ***"
+echo "Checking if aws-adfs is installed"
+
+if ! aws-adfs -v COMMAND &> /dev/null; then 
+    echo "aws-adfs not installed, installing now..." 
+    if ! pip3 -v COMMAND &> /dev/null; then
+        echo "pip3 not installed, installing now..." 
+        apt-get install python3 python3-pip -y
+    fi
+    pip3 install aws-adfs
+else
+    echo "aws-adfs already installed, skipping!"
+fi
